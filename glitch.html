@@ -7,64 +7,81 @@
     <style>
         /* Styling for the image container */
         .image-container {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
+            overflow: hidden;
+            width: 100%;
+            position: relative;
         }
+        
         /* Styling for individual images */
         .image-container img {
-            max-width: 30%;
-            height: auto;
+            max-width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
         }
-         header {
-      background-color: #333;
-      color: #fff;
-      padding: 15px 20px;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      padding: 10px 20px;
-    }
-    nav a:hover {
-      background-color: #555;
-    }
-    section {
-      padding: 20px;
-    }
-    footer {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 10px 0;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
+        
+        /* Styling for previous and next buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            z-index: 1;
+        }
+        
+        .prev {
+            left: 0;
+        }
+        
+        .next {
+            right: 0;
+        }
     </style>
 </head>
 <body>
-     <header>
-    <h1>Vanessa Findlay</h1>
-    <nav>
-      <a href="glitch.html">Glitch Project</a>
-      <a href="#projects">Meme Mashup</a>
-      <a href="#contact">Minecraft</a>
-       <a href="#contact">3D</a>
-       <a href="#contact">Minecraft</a>
-       <a href="#contact">Net Art</a>
-    </nav>
-  </header>
+    <header>
+        <h1>Vanessa Findlay</h1>
+        <nav>
+            <a href="glitch.html">Glitch Project</a>
+            <a href="#projects">Meme Mashup</a>
+            <a href="#contact">Minecraft</a>
+            <a href="#contact">3D</a>
+            <a href="#contact">Minecraft</a>
+            <a href="#contact">Net Art</a>
+        </nav>
+    </header>
     <h1>Image Gallery</h1>
     <div class="image-container">
-        <img src="anglerfish.jpg" alt="Image 1">
-        <img src="naut.jpg" alt="Image 2">
-        <img src="ghost.jpg" alt="Image 3">
+        <img class="slide" src="anglerfish.jpg" alt="Image 1">
+        <img class="slide" src="naut.jpg" alt="Image 2">
+        <img class="slide" src="ghost.jpg" alt="Image 3">
+        <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
+        <a class="next" onclick="moveSlide(1)">&#10095;</a>
     </div>
-    <p>Using various methods, we glitched images. I used the audacity program, text editor, and a mic of both to create these glitches of sea animals</p>
+    <p>Using various methods, we glitched images. I used the audacity program, text editor, and a mix of both to create these glitches of sea animals</p>
+
+    <script>
+        let slideIndex = 0;
+        showSlide(slideIndex);
+        
+        function moveSlide(n) {
+            showSlide(slideIndex += n);
+        }
+        
+        function showSlide(n) {
+            let slides = document.getElementsByClassName("slide");
+            if (n >= slides.length) {
+                slideIndex = 0;
+            }
+            if (n < 0) {
+                slideIndex = slides.length - 1;
+            }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.transform = "translateX(-" + (slideIndex * 100) + "%)";
+            }
+        }
+    </script>
 </body>
 </html>
