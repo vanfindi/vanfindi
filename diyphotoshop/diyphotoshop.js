@@ -1,7 +1,7 @@
 var img;
 var initials ='vf'; // your initials
 var choice = '1'; // starting choice, so it is not empty
-var screenbg = 250; // off white background
+var screenbg = 250; // galaxy background
 var lastscreenshot=61; // last screenshot never taken
 
 function preload() {
@@ -126,7 +126,7 @@ function saveme(){
   filename=initials+day() + hour() + minute() +second();
   if (second()!=lastscreenshot) { // don't take a screenshot if you just took one
     saveCanvas(filename, 'jpg');
-    key="";
+    key="s";
   }
   lastscreenshot=second(); // set this to the current second so no more than one per second
   
