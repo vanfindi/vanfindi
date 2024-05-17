@@ -1,23 +1,26 @@
 var img;
 var initials ='vf'; // your initials
 var choice = '1'; // starting choice, so it is not empty
-var screenbg = 250; // off white background
+var screenbg = 250; // background
 var lastscreenshot=61; // last screenshot never taken
 
 function preload() {
-// preload() runs once, it may make you wait
-//  img = loadImage('cat.jpg');  // cat.jpg needs to be next to this .js file
-// you can link to an image on your github account
+  bkgrd = loadImage('https://vanfindi.github.io/game/bkgrd.jpg');
   trex = loadImage('https://vanfindi.github.io/game/trex.png');
+  brach = loadImage('https://vanfindi.github.io/game/brach.png');
+  ptero = loadImage('https://vanfindi.github.io/game/ptero.png');
+  shrub = loadImage('https://vanfindi.github.io/game/shrub.png');
+  grass = loadImage('https://vanfindi.github.io/game/grass.png');
+  egg = loadImage('https://vanfindi.github.io/game/egg.png');
 }
 
 function setup() {
-createCanvas(600, 600);  // canvas size
-background(screenbg);   // use our background screen color
+createCanvas(700, 700);  // canvas size
+background(bkgrd);   // background
 
 // Create a color picker and set its position.
   myPicker = createColorPicker('deeppink');
-  myPicker.position(600, 0);
+  myPicker.position(715, 0);
 
   describe('color picker');
 
@@ -37,53 +40,59 @@ function newkeyChoice(toolChoice) { //toolchoice is the key that was pressed
   // the key mapping if statements that you can change to do anything you want.
   // just make sure each key option has the a stroke or fill and then what type of 
   // graphic function
+  
+   // color picker
+  let c = myPicker.color();
+  
 
- if (toolChoice == '1' ) {  // first tool
+ if (toolChoice == '1' ) {  // Trex
    
-   image(trex, mouseX-125, mouseY-50, 200, 200);
+   image(trex, mouseX-125, mouseY-50, 250, 250);
     
-  } else if (key == '2') { // purplify
-  push();
-   blendMode(DIFFERENCE);
-    stroke(0, 0, 255);
-    testbox(20, 20, 200);
-    testbox(200, 20, 20);
-  pop();
-  } else if (toolChoice == '3') { // third tool
+  } else if (key == '2') { // Brachiosaurus
+  
+  image(brach, mouseX-125, mouseY-50, 350, 350);
+  
+  } else if (toolChoice == '3') { // Pterodactyl
 
-    stroke(300, 100, 0, 80);
-    line(mouseX, mouseY, pmouseX, pmouseY);
-  } else if (toolChoice == '4') {
+     image(ptero, mouseX-125, mouseY-50, 210, 210);
+     
+  } else if (toolChoice == '4') { // Shrub
 
-    stroke(0, 0, 255);
-    line(mouseX, mouseY, pmouseX, pmouseY);
-  } else if (key == '5') { // this tool calls a function
-    stroke(0, 0, 255);
-    testbox(20, 20, 200);
-    testbox(200, 20, 20);
+     image(shrub, mouseX-125, mouseY-50, 200, 200);
+     
+  } else if (key == '5') { // Grass
+  
+    image(grass, mouseX-125, mouseY-50, 200, 200);
     
- // make testbox do something!
- //   line(mouseX, mouseY, pmouseX, pmouseY);
-  } else if (toolChoice == '6') {
+  } else if (toolChoice == '6') { // Paint tool
 
-    stroke(200);
+   fill(c)
+   stroke(c)
+   circle(mouseX, mouseY, 30, 30);
+   
+  } else if (toolChoice == '7') { // Thin line
+
+    stroke(c);
+    strokeWeight(1.5);
     line(mouseX, mouseY, pmouseX, pmouseY);
-  } else if (toolChoice == '7') {
+    
+  } else if (toolChoice == '8') { // Thick line
 
-    fill(100, 200, 100);
-    rect(mouseX, mouseY, 20, 20);
-  } else if (toolChoice == '8') {
+    stroke(c);
+    strokeWeight(5);
+    line(mouseX, mouseY, pmouseX, pmouseY);
+    
+  } else if (toolChoice == '9') { // Background (mountains)
 
-    fill(300, 100, 0, 80);
-    rect(mouseX, mouseY, 20, 20);
-  } else if (toolChoice == '9') {
-
-    fill(300, 100, 0, 80);
-    rect(mouseX, mouseY, 40, 40);
+    fill(c);
+    stroke(c);
+    triangle(mouseX-50, mouseY+70, mouseX+50, mouseY+70, mouseX, mouseY);
+    
   } else if (toolChoice == '0') {
-    stroke(0, 0);
-    fill(random(255), random(255), random(255), random(255));
-    rect(mouseX, mouseY, 200, 150);
+    
+    image(egg, mouseX-125, mouseY-50, 150, 150);
+    
   } else if (toolChoice == 'g' || toolChoice == 'G') { // g places the image we pre-loaded
     image(img, mouseX, mouseY, 50, 50);
     
@@ -103,7 +112,7 @@ function clear_print() {
 // this will do one of two things, x clears the screen by resetting the background
 // p calls the routine saveme, which saves a copy of the screen
   if (key == 'x' || key == 'X') {
-    background(screenbg); // set the screen back to the background color
+    background(bkgrd); // set the screen back to the background image
   } else if (key == 'p' || key == 'P') {
      saveme();  // call saveme which saves an image of the screen
   }
