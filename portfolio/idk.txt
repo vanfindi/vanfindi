@@ -1,0 +1,18 @@
+<html><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
+  <script language="javascript" type="text/javascript" src="libraries/p5.min.js"></script>
+  <script language="javascript" type="text/javascript" src="diyps2023.js"></script>
+  <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
+
+  <!-- This line removes any default padding and style.
+       You might only need one of these values set. -->
+  <style> body { padding: 0; margin: 0; } </style>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1173.0" data-gr-ext-installed="">
+
+
+<main><canvas id="defaultCanvas0" class="p5Canvas" width="1200" height="1200" style="width: 600px; height: 600px;"><div id="defaultCanvas0_Description" role="region" aria-label="Canvas Description"><p id="defaultCanvas0_fallbackDesc">color picker.</p></div></canvas></main><input type="color" style="position: absolute; left: 600px; top: 0px;"></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
