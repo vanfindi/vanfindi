@@ -5,13 +5,14 @@ var screenbg = 150; // grey background
 var lastscreenshot=61; // last screenshot never taken
 
 function preload() {
+  grid = loadImage('https://vanfindi.github.io/game/griddy.jpg');
   paint = loadImage('https://vanfindi.github.io/game/paint.png');
   globe = loadImage('https://vanfindi.github.io/game/globe.png');
 }
 
 function setup() {
 createCanvas(700, 600);  // canvas size
-background(150);   // background screen color
+background(grid);   // background screen
 
 // Create a color picker and set its position.
   myPicker = createColorPicker('deeppink');
